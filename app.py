@@ -26,7 +26,12 @@ def showGbp():
     pass
 
 def showEuro():
-    #Your code will go here, remove the pass once you are done editing your code
+    response = requests.get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=eur")
+    if response.status_code == 200:
+        data = response.json()
+        print(f"Bitcoin price in EUR: €{data['bitcoin']['eur']}")
+    else:
+        print("Failed to fetch data")
     pass
 
 while True:
