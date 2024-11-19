@@ -17,7 +17,12 @@ def showUsd():
     print(time,code,rate)
 
 def showGbp():
-    #Your code will go here, remove the pass once you are done editing your code
+    response = requests.get("https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=gbp")
+    if response.status_code == 200:
+        data = response.json()
+        print(f"Bitcoin price in GBP: £{data['bitcoin']['gbp']}")
+    else:
+        print("Failed to fetch data")
     pass
 
 def showEuro():
